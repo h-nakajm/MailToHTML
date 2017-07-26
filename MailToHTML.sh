@@ -53,12 +53,10 @@ done
 
 # outをファイルに出力
 for i in ${out[@]}; do
-  echo -e "$i\n" >> $out_file
+ echo -e "$i\n" >> $out_file
 done
 
-# for i in ${out[@]}; do
-#  echo -e "$i\n"
-# done
+# echo -e "${out[@]}"
 
 # 出力ファイルのエンコードをUTF-8→Shift-JISに変換
 # iconv -f UTF8 -t SJIS $out_file > $converted_file
