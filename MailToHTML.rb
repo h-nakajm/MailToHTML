@@ -8,7 +8,7 @@ File.open(ARGV[0], mode = "r") { |f| input = f.readlines }
 # HTMLの特殊文字をサニタイズ
 require 'cgi'
 escaped_input = []
-input.each { |item| escaped_input << CGI.escapeHTML(item)}
+input.each { |item| escaped_input << CGI.escapeHTML(item) }
 
 # 雛形を配列に読み込む
 lib = []
