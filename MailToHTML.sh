@@ -61,7 +61,7 @@ done
 # done
 
 # 出力ファイルのエンコードをUTF-8→Shift-JISに変換
-iconv -f UTF8 -t SJIS $out_file > $converted_file
+# iconv -f UTF8 -t SJIS $out_file > $converted_file
 
 # 区切り文字を復帰
 IFS=$IFS_SAVE
