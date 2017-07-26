@@ -18,7 +18,6 @@ subject_index = input.rindex { |item|
   item =~ /^Subject/
 }
 
-puts subject_index
-
 # 雛形への挿入箇所を検索
 # <body>の次の行
+body_index = lib.index { |item| item =~ /^<body>/ }
