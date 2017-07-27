@@ -1,5 +1,5 @@
 # 出力ファイル名を設定
-out_file = 'out.html'
+out_file = ARGV[0] + '.html'
 
 # 入力ファイルを配列に読み込む
 input = []
