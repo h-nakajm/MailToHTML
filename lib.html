@@ -1,86 +1,84 @@
 <html>
+
 <head>
-<title>Test page</title>
+	<title>Test page</title>
 </head>
 
 <script type="text/javascript">
+	function categorize() {
 
-function categorize(){
+		var a = "";
 
-	var a = "";
+		// 選択されているボタンを取得
 
-	// 選択されているボタンを取得
+		for (var i = 0; i < document.form1.example.length; i++) {
 
-	for(var i=0; i<document.form1.example.length; i++){
-	
-		if(document.form1.elements[i].checked){
-		
-			a = document.form1.elements[i].value;
-			break;
-		
+			if (document.form1.elements[i].checked) {
+
+				a = document.form1.elements[i].value;
+				break;
+
+			}
+
 		}
-	
+
+
+		// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+
+		if (window.confirm(a)) {
+
+		}
+
+		// 「キャンセル」時の処理開始
+		else {
+
+		}
+
 	}
 
+	function quit() {
 
-	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
-
-	if(window.confirm(a)){
-
-	}
-
-	// 「キャンセル」時の処理開始
-
-	else{
+		window.confirm('quit');
 
 	}
-
-}
-
-function quit(){
-
-	window.confirm('quit');
-
-}
-
-
 </script>
 
 <body>
 
 
 
-</br>
-</br>
-</br>
-Looking at the text of the email, would you categorize it as:</br>
-</br>
+	</br>
+	</br>
+	</br>
+	Looking at the text of the email, would you categorize it as:</br>
+	</br>
 
-<form name="form1">
-<input type="radio" name="example" value="Personal">Personal</br>
-<input type="radio" name="example" value="Work-related">Work-related</br>
-<input type="radio" name="example" value="Legitimate e-Commerce">Legitimate e-Commerce</br>
-<input type="radio" name="example" value="Spam">Spam</br>
-</form>
+	<form name="form1">
+		<input type="radio" name="example" value="Personal">Personal</br>
+		<input type="radio" name="example" value="Work-related">Work-related</br>
+		<input type="radio" name="example" value="Legitimate e-Commerce">Legitimate e-Commerce</br>
+		<input type="radio" name="example" value="Spam">Spam</br>
+	</form>
 
-<p>
-<input type="button" value="Categorize this email" onclick="categorize()">
-</p>
-</br>
-Notes:</br>
+	<p>
+		<input type="button" value="Categorize this email" onclick="categorize()">
+	</p>
+	</br>
+	Notes:</br>
 
-<ul>
-<li>You have categolized %d emails so far.</li>
-<li>You are earning a bonus of %d cents after every email you categorize.</li>
-<li>To ensure accuracy of responeses, we will check the accuracy of a random sample of your work.</li>
-<li>There is a limit of 1000 emails per contributer. Please do not attempt more.</li>
-<li>These emails have been released to the public domain. Phone numbers have been removed from these emails, and the company name changed to MegaCorp.</li>
-<li>When you are done categorizing all the emails you wish to complete, click Stop Categorizing Emails and Complete Task below.</li>
-</ul>
+	<ul>
+		<li>You have categolized %d emails so far.</li>
+		<li>You are earning a bonus of %d cents after every email you categorize.</li>
+		<li>To ensure accuracy of responeses, we will check the accuracy of a random sample of your work.</li>
+		<li>There is a limit of 1000 emails per contributer. Please do not attempt more.</li>
+		<li>These emails have been released to the public domain. Phone numbers have been removed from these emails, and the company name changed to MegaCorp.</li>
+		<li>When you are done categorizing all the emails you wish to complete, click Stop Categorizing Emails and Complete Task below.</li>
+	</ul>
 
-<p align="right">
-<input type="button" value="Stop categorizing emails and complete task" onclick="quit()">
-</p>
+	<p align="right">
+		<input type="button" value="Stop categorizing emails and complete task" onclick="quit()">
+	</p>
 
 </body>
+
 </html>
