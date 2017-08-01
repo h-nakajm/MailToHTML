@@ -2,6 +2,16 @@
 
 <head>
 	<title>Test page</title>
+	<style type="text/css">
+		.image {
+			display: none;
+		}
+
+		body {
+			margin: 0 0 200 0;
+		}
+	</style>
+
 </head>
 
 <script type="text/javascript">
@@ -78,6 +88,17 @@
 	<p align="right">
 		<input type="button" value="Stop categorizing emails and complete task" onclick="quit()">
 	</p>
+	<div class="image">
+		<a href="http://sdl.ist.osaka-u.ac.jp">
+	        <img src="https://img1.nend.net/img/banner/3485/102605/2551733_a263508efe7895ad44648db83f9fd28c38e92ff5d090483b93d70ecd.gif" width="1280" height="200">
+	      </a>
+		<!-- <img src="http://example.com/img1.gif" width="1" height="1"> -->
+	</div>
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="./dist/jquery.overlayad.js"></script>
+	<script>
+		$('.image').overlayAd();
+	</script>
 
 </body>
 
