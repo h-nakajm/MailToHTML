@@ -3,10 +3,6 @@
 <head>
 	<title>Test page</title>
 	<style type="text/css">
-		.image {
-			display: none;
-		}
-
 		body {
 			margin: 0 0 200 0;
 		}
@@ -88,16 +84,39 @@
 	<p align="right">
 		<input type="button" value="Stop categorizing emails and complete task" onclick="quit()">
 	</p>
-	<div class="image">
-		<a href="http://sdl.ist.osaka-u.ac.jp">
-	        <img src="https://img1.nend.net/img/banner/3485/102605/2551733_a263508efe7895ad44648db83f9fd28c38e92ff5d090483b93d70ecd.gif" width="1280" height="200">
-	      </a>
-		<!-- <img src="http://example.com/img1.gif" width="1" height="1"> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="./js/jquery.meerkat.1.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.meerkat').meerkat({
+				background: 'url(\'./image/black.png\') repeat-x left top',
+				height: '200px',
+				width: '100%',
+				position: 'bottom',
+				//close: '.close-meerkat',
+				//dontShowAgain: '.dont-show',
+				//animationIn: 'slide',
+				//animationSpeed: 500,
+				//removeCookie: '.reset'
+			}).addClass('pos-bot');
+		});
+	</script>
+
+	<div style="text-align: center;" class="meerkat">
+		<a href="http://sdl.ist.osaka-u.ac.jp" target="_blank">
+			<img border="0" width="640" height="200" alt="" src="./image/sample_ad01.png"></a>
 	</div>
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-	<script src="./dist/jquery.overlayad.js"></script>
-	<script>
-		$('.image').overlayAd();
+
+	<script type="text/javascript">
+		$('.meerkat').on({
+			'click': function() {
+				window.open('http://sdl.ist.osaka-u.ac.jp');
+			}
+		});
+		window.onload = function(){
+			$('body').removeAttr('style');
+		}
 	</script>
 
 </body>
