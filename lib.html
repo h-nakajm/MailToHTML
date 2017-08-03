@@ -24,21 +24,25 @@
 				a = document.form1.elements[i].value;
 				break;
 
+			} else if (i == document.form1.example.length - 1) {
+
+				window.alert('Please select the button.');
+
 			}
 
 		}
 
 
-		// 「OK」時の処理開始 ＋ 確認ダイアログの表示
-
-		if (window.confirm(a)) {
-
-		}
-
-		// 「キャンセル」時の処理開始
-		else {
-
-		}
+		// // 「OK」時の処理開始 ＋ 確認ダイアログの表示
+		//
+		// if (window.confirm(a)) {
+		//
+		// }
+		//
+		// // 「キャンセル」時の処理開始
+		// else {
+		// 
+		// }
 
 	}
 
