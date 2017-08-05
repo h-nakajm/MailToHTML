@@ -21,7 +21,24 @@
 
 			if (document.form1.elements[i].checked) {
 
+				// 選択されているボタンを取得
 				a = document.form1.elements[i].value;
+
+				// Ajaxで送信するデータを作成
+				var result = {
+					url: document.location.href,
+					date: new Date(),
+					selected: a
+				}
+
+				// 作成したデータをAjaxで送信
+				$.ajax({
+					url: "http://127.0.0.1:8080/test/result/",
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(result)
+				})
+
 				break;
 
 			} else if (i == document.form1.example.length - 1) {
@@ -41,7 +58,7 @@
 		//
 		// // 「キャンセル」時の処理開始
 		// else {
-		// 
+		//
 		// }
 
 	}
@@ -118,7 +135,7 @@
 				window.open('http://sdl.ist.osaka-u.ac.jp');
 			}
 		});
-		window.onload = function(){
+		window.onload = function() {
 			$('body').removeAttr('style');
 		}
 	</script>
