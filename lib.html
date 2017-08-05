@@ -36,7 +36,13 @@
 					url: "http://127.0.0.1:8080/test/result/",
 					type: "POST",
 					contentType: "application/json",
-					data: JSON.stringify(result)
+					data: JSON.stringify(result),
+					success: function() {
+						window.location.href = "http://sdl.ist.osaka-u.ac.jp";
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						window.alert(textStatus + ": Unable to connect to the server.");
+					}
 				})
 
 				break;
