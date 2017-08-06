@@ -1,11 +1,11 @@
+// メール分類ボタンが押された場合
 function categorize() {
 
   var a = "";
 
-  // 選択されているボタンを取得
-
   for (var i = 0; i < document.form1.example.length; i++) {
 
+    // ボタンが選択されている場合
     if (document.form1.elements[i].checked) {
 
       // 選択されているボタンを取得
@@ -34,6 +34,7 @@ function categorize() {
 
       break;
 
+      // ボタンが選択されていない場合
     } else if (i == document.form1.example.length - 1) {
 
       window.alert('Please select the button.');
@@ -42,26 +43,16 @@ function categorize() {
 
   }
 
-
-  // // 「OK」時の処理開始 ＋ 確認ダイアログの表示
-  //
-  // if (window.confirm(a)) {
-  //
-  // }
-  //
-  // // 「キャンセル」時の処理開始
-  // else {
-  //
-  // }
-
 }
 
+// 途中でやめるボタンが押された場合
 function quit() {
 
   window.confirm('quit');
 
 }
 
+// アンカー広告を挿入
 $(function() {
   $('.meerkat').meerkat({
     background: 'url(\'./image/black.png\') repeat-x left top',
@@ -76,16 +67,24 @@ $(function() {
   }).addClass('pos-bot');
 });
 
+// 広告の両側の黒い部分が押された場合のページ遷移
 $('.meerkat').on({
   'click': function() {
     window.open('http://sdl.ist.osaka-u.ac.jp');
   }
 });
+
+//ページ読み込み終了時の処理
 window.onload = function() {
+
+  // bodyに動的に追加されたスタイルを削除
   $('body').removeAttr('style');
+
+  // urlのクエリパラメタからidを取得して「your ID」に表示
   var match = location.search.match(/id=(.*?)(&|$)/);
   if (match) {
     id = match[1];
     $('#id').text(id);
   }
+
 }
