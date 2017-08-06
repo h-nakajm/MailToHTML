@@ -78,7 +78,10 @@
 
 <body>
 
-
+	<div align="right">
+		your ID:
+		<span id="id"></span>
+	</div>
 
 	</br>
 	</br>
@@ -143,6 +146,11 @@
 		});
 		window.onload = function() {
 			$('body').removeAttr('style');
+			var match = location.search.match(/id=(.*?)(&|$)/);
+			if(match){
+				id = match[1];
+				$('#id').text(id);
+			}
 		}
 	</script>
 
