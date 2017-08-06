@@ -20,7 +20,6 @@ subject_index = escaped_input.rindex { |item| item =~ /^Subject/ }
 # 雛形への挿入箇所を検索
 # 最初の</div>の次の行
 div_index = lib.index { |item| item =~ /<\/div>/ }
-p div_index
 
 # libの<body>までを配列outputに入れる
 output = []
