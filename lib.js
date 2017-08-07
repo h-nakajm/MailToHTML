@@ -2,6 +2,7 @@
 function categorize() {
 
   var a = "";
+  var next_page = $('#next').text();
 
   for (var i = 0; i < document.form1.example.length; i++) {
 
@@ -25,7 +26,7 @@ function categorize() {
         contentType: "application/json",
         data: JSON.stringify(result),
         success: function() {
-          window.location.href = "http://sdl.ist.osaka-u.ac.jp";
+          window.location.href = next_page;
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           window.alert(textStatus + ": Unable to connect to the server.");
