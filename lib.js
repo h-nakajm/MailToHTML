@@ -2,7 +2,7 @@
 function categorize() {
 
   var a = "";
-  var next_page = $('#next').text();
+  var next_page = $('#next').text() + '?id=' + $('#id').text();
 
   for (var i = 0; i < document.form1.example.length; i++) {
 
