@@ -68,13 +68,6 @@ $(function() {
   }).addClass('pos-bot');
 });
 
-// 広告の両側の黒い部分が押された場合のページ遷移
-$('.meerkat').on({
-  'click': function() {
-    window.open('http://sdl.ist.osaka-u.ac.jp');
-  }
-});
-
 //ページ読み込み終了時の処理
 window.onload = function() {
 
@@ -87,5 +80,12 @@ window.onload = function() {
     id = match[1];
     $('#id').text(id);
   }
+
+  // 広告の両側の黒い部分が押された場合のページ遷移
+  $('.meerkat').on({
+    'click': function() {
+      window.open('http://sdl.ist.osaka-u.ac.jp');
+    }
+  });
 
 }
