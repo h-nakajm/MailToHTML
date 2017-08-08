@@ -10,10 +10,10 @@ host = "http://localhost:8000/"
 # カレントディレクトリにあるメールファイルの名前を全て取得
 input_files = []
 Dir.foreach('.'){|item|
-  next if item == '.' or item == '..' or item == 'test.rb'
+  next if item == '.' or item == '..' or item == File.basename($0)
   input_files << item
 }
-input_files.sort!
+input_files.sort!{|a, b| a.to_i <=> b.to_i}
 
 # 出力ファイル名を設定
 # [000~999][元メールの番号].html
