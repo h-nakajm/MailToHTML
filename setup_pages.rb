@@ -10,7 +10,7 @@ host = "http://localhost:8000/"
 # カレントディレクトリにあるメールファイルの名前を全て取得
 input_files = []
 Dir.foreach('.'){|item|
-  next if item == '.' or item == '..' or item == File.basename($0)
+  next if item == '.' or item == '..' or item == File.basename($0) or item == 'target'
   input_files << item
 }
 input_files.sort!{|a, b| a.to_i <=> b.to_i}
@@ -47,7 +47,7 @@ input_contents.each_with_index{|input_content ,index|
 
 # ページ遷移を追加した実験ページをファイルに出力
 output_files.each_with_index{|output_file, index|
-  File.open(output_file, "w"){|f|
+  File.open("./target/#{output_file}", "w"){|f|
     f.puts(input_contents[index])
   }
 }
