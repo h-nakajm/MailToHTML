@@ -79,7 +79,7 @@ $('.meerkat').on({
 window.onload = function() {
 
   // bodyに動的に追加されたスタイルを削除
-  $('body').removeAttr('style');
+  //$('body').removeAttr('style');
 
   // urlのクエリパラメタからidを取得して「your ID」に表示
   var match = location.search.match(/id=(.*?)(&|$)/);
