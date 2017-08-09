@@ -21,6 +21,7 @@ function categorize() {
         url: document.location.href,
         start: start,
         end: end,
+        id: $('#id').text(),
         selected: a
       }
 
