@@ -1,3 +1,5 @@
+var start;
+
 // メール分類ボタンが押された場合
 function categorize() {
 
@@ -9,13 +11,16 @@ function categorize() {
     // ボタンが選択されている場合
     if (document.form1.elements[i].checked) {
 
+      var end = new Date();
+
       // 選択されているボタンを取得
       a = document.form1.elements[i].value;
 
       // Ajaxで送信するデータを作成
       var result = {
         url: document.location.href,
-        date: new Date(),
+        start: start,
+        end: end,
         selected: a
       }
 
@@ -70,6 +75,8 @@ $(function() {
 
 //ページ読み込み終了時の処理
 window.onload = function() {
+
+  start = new Date();
 
   // bodyに動的に追加されたスタイルを削除
   $('body').removeAttr('style');
