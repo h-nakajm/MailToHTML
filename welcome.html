@@ -32,8 +32,8 @@
 				var ID = $("#id1").val();
 				var next_page = "http://localhost:8000/000139.html?id=" + ID;
 				var result = {
-					date: new Date(),
 					id: ID,
+					date: new Date(),
 					userAgent: window.navigator.userAgent
 				}
 				$.ajax({

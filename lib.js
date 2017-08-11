@@ -18,10 +18,10 @@ function categorize() {
 
       // Ajaxで送信するデータを作成
       var result = {
+        id: $('#id').text(),
         url: document.location.href,
         start: start,
         end: end,
-        id: $('#id').text(),
         selected: a
       }
 
