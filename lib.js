@@ -1,6 +1,7 @@
 var start;
 var dbpath = "http://127.0.0.1:8080/test/results/";
-var ad_clicked = "http://sdl.ist.osaka-u.ac.jp";
+var ad_dbpath = "http://127.0.0.1:8080/test/ad_clicked";
+var ad_open = "http://sdl.ist.osaka-u.ac.jp";
 
 // メール分類ボタンが押された場合
 function categorize() {
@@ -95,7 +96,21 @@ window.onload = function() {
   // 広告の両側の黒い部分が押された場合のページ遷移
   $('.meerkat').on({
     'click': function() {
-      window.open(ad_clicked);
+      window.open(ad_open);
+      var record = {
+        id: $('#id').text(),
+        url: document.location.href,
+        date: new Date()
+      }
+      $.ajax({
+        url: ad_dbpath,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(record),
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          window.alert(textStatus + ": Unable to connect to the server.");
+        }
+      })
     }
   });
 
