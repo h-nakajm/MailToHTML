@@ -1,4 +1,6 @@
 var start;
+var dbpath = "http://127.0.0.1:8080/test/results/";
+var ad_clicked = "http://sdl.ist.osaka-u.ac.jp";
 
 // メール分類ボタンが押された場合
 function categorize() {
@@ -22,12 +24,13 @@ function categorize() {
         url: document.location.href,
         start: start,
         end: end,
+        time: end - start,
         selected: a
       }
 
       // 作成したデータをAjaxで送信
       $.ajax({
-        url: "http://127.0.0.1:8080/test/results/",
+        url: dbpath,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(result),
@@ -92,7 +95,7 @@ window.onload = function() {
   // 広告の両側の黒い部分が押された場合のページ遷移
   $('.meerkat').on({
     'click': function() {
-      window.open('http://sdl.ist.osaka-u.ac.jp');
+      window.open(ad_clicked);
     }
   });
 
