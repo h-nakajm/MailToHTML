@@ -27,7 +27,7 @@ function categorize() {
 
       // 作成したデータをAjaxで送信
       $.ajax({
-        url: "http://127.0.0.1:8080/test/result/",
+        url: "http://127.0.0.1:8080/test/results/",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(result),
