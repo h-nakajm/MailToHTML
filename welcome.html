@@ -2,9 +2,10 @@
 
 <head>
 	<title>Sign up</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+	<script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="text/javascript"></script> -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script> -->
 	<script type="text/javascript">
-
 		var dbpath = "http://127.0.0.1:8080/test/participants/";
 
 		// Enterキーでの送信を許さない
@@ -32,11 +33,11 @@
 				var ID = $("#id1").val();
 				var next_page = "http://localhost:8000/000139.html?id=" + ID;
 				var result = {
-					id: ID,
-					date: new Date(),
-					userAgent: window.navigator.userAgent
-				}
-				$.ajax({
+					"id": ID,
+					"date": new Date(),
+					"userAgent": window.navigator.userAgent
+				};
+				/* $.ajax({
 					url: dbpath,
 					type: "POST",
 					contentType: "application/json",
@@ -47,6 +48,17 @@
 					error: function(XMLHttpRequest, textStatus, errorThrown) {
 						window.alert(textStatus + ": Unable to connect to the server.");
 					}
+				}); */
+				$.ajax({
+					url: dbpath,
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(result),
+					dataType: 'xml'
+				}).done(function(data) { // success
+					window.location.href = next_page;
+				}).fail(function(data) { // error
+					window.alert(textStatus + ": Unable to connect to the server.");
 				});
 			}
 		}

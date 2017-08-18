@@ -30,7 +30,7 @@ function categorize() {
       }
 
       // 作成したデータをAjaxで送信
-      $.ajax({
+      /* $.ajax({
         url: dbpath,
         type: "POST",
         contentType: "application/json",
@@ -41,7 +41,18 @@ function categorize() {
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           window.alert(textStatus + ": Unable to connect to the server.");
         }
-      })
+      }) */
+      $.ajax({
+        url: dbpath,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(result),
+        dataType: 'xml'
+      }).done(function(data) { // success
+        window.location.href = next_page;
+      }).fail(function(data) { // error
+        window.alert(textStatus + ": Unable to connect to the server.");
+      });
 
       break;
 
@@ -102,7 +113,7 @@ window.onload = function() {
         url: document.location.href,
         date: new Date()
       }
-      $.ajax({
+      /* $.ajax({
         url: ad_dbpath,
         type: "POST",
         contentType: "application/json",
@@ -110,7 +121,18 @@ window.onload = function() {
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           window.alert(textStatus + ": Unable to connect to the server.");
         }
-      })
+      }) */
+      $.ajax({
+        url: ad_dbpath,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(record),
+        dataType: 'xml'
+      }).done(function(data) { // success
+        console.log("success");
+      }).fail(function(data) { // error
+        console.log("fail");
+      });
     }
   });
 
