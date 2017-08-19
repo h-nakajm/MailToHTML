@@ -3,8 +3,6 @@
 <head>
 	<title>Sign up</title>
 	<script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="text/javascript"></script> -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script> -->
 	<script type="text/javascript">
 		var dbpath = "http://127.0.0.1:8080/test/participants/";
 
@@ -37,18 +35,8 @@
 					"date": new Date(),
 					"userAgent": window.navigator.userAgent
 				};
-				/* $.ajax({
-					url: dbpath,
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(result),
-					success: function() {
-						window.location.href = next_page;
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown) {
-						window.alert(textStatus + ": Unable to connect to the server.");
-					}
-				}); */
+
+				// 参加者の情報をdbに送る
 				$.ajax({
 					url: dbpath,
 					type: "POST",

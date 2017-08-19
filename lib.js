@@ -30,18 +30,6 @@ function categorize() {
       }
 
       // 作成したデータをAjaxで送信
-      /* $.ajax({
-        url: dbpath,
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(result),
-        success: function() {
-          window.location.href = next_page;
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          window.alert(textStatus + ": Unable to connect to the server.");
-        }
-      }) */
       $.ajax({
         url: dbpath,
         type: "POST",
@@ -104,7 +92,7 @@ window.onload = function() {
     $('#id').text(id);
   }
 
-  // 広告の両側の黒い部分が押された場合のページ遷移
+  // 広告の両側の黒い部分が押された場合のページ遷移(新規window)
   $('.meerkat').on({
     'click': function() {
       window.open(ad_open);
@@ -113,15 +101,8 @@ window.onload = function() {
         url: document.location.href,
         date: new Date()
       }
-      /* $.ajax({
-        url: ad_dbpath,
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(record),
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          window.alert(textStatus + ": Unable to connect to the server.");
-        }
-      }) */
+
+      // 広告がクリックされた情報をdbに送る
       $.ajax({
         url: ad_dbpath,
         type: "POST",
