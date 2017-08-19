@@ -7,7 +7,6 @@ var ad_open = "http://sdl.ist.osaka-u.ac.jp";
 function categorize() {
 
   var a = "";
-  var next_page = $('#next').text() + '?id=' + $('#id').text();
 
   for (var i = 0; i < document.form1.example.length; i++) {
 
@@ -15,6 +14,7 @@ function categorize() {
     if (document.form1.elements[i].checked) {
 
       var end = new Date();
+      var next_page = $('#next').text() + '?id=' + $('#id').text() + '&type=' + $('#type').text();
 
       // 選択されているボタンを取得
       a = document.form1.elements[i].value;
@@ -62,45 +62,41 @@ function quit() {
 
 }
 
-// アンカー広告を挿入
-$(function() {
-  $('.meerkat').meerkat({
-    background: 'url(\'./image/black.png\') repeat-x left top',
-    height: '200px',
-    width: '100%',
-    position: 'bottom',
-    //close: '.close-meerkat',
-    //dontShowAgain: '.dont-show',
-    //animationIn: 'slide',
-    //animationSpeed: 500,
-    //removeCookie: '.reset'
-  }).addClass('pos-bot');
-});
+var type = location.search.match(/type=(.*?)(&|$)/);
+if (type[1] == "anchor") {
+  // アンカー広告を挿入
+  $(function() {
+    $('.meerkat').meerkat({
+      background: 'url(\'./image/black.png\') repeat-x left top',
+      height: '200px',
+      width: '100%',
+      position: 'bottom',
+      //close: '.close-meerkat',
+      //dontShowAgain: '.dont-show',
+      //animationIn: 'slide',
+      //animationSpeed: 500,
+      //removeCookie: '.reset'
+    }).addClass('pos-bot');
+  });
+}
 
 //ページ読み込み終了時の処理
 window.onload = function() {
 
   start = new Date();
 
-  // bodyに動的に追加されたスタイルを削除
-  $('body').removeAttr('style');
+  if (type[1] == "static") {
+    // 静止広告を挿入
+    $("#static_ad_space").after("<a href=\"http:\/\/sdl.ist.osaka-u.ac.jp\" target=\"_blank\"><img id=\"static_ad\" width=\"640\" src=\"./image/sample_ad01.png\"></a>");
 
-  // urlのクエリパラメタからidを取得して「your ID」に表示
-  var match = location.search.match(/id=(.*?)(&|$)/);
-  if (match) {
-    id = match[1];
-    $('#id').text(id);
-  }
-
-  // 広告の両側の黒い部分が押された場合のページ遷移(新規window)
-  $('.meerkat').on({
-    'click': function() {
-      window.open(ad_open);
+    // 静止広告がクリックされた時の処理
+    $("#static_ad").on('click', function() {
       var record = {
         id: $('#id').text(),
         url: document.location.href,
-        date: new Date()
-      }
+        date: new Date(),
+        type: "static"
+      };
 
       // 広告がクリックされた情報をdbに送る
       $.ajax({
@@ -114,7 +110,46 @@ window.onload = function() {
       }).fail(function(data) { // error
         console.log("fail");
       });
-    }
-  });
+    });
+  } else if (type[1] == "anchor") {
+    // アンカー広告の両側の黒い部分が押された場合のページ遷移(新規window)
+    $('.meerkat').on({
+      'click': function() {
+        window.open(ad_open);
+        var record = {
+          id: $('#id').text(),
+          url: document.location.href,
+          date: new Date(),
+          type: "anchor"
+        };
+
+        // 広告がクリックされた情報をdbに送る
+        $.ajax({
+          url: ad_dbpath,
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(record),
+          dataType: 'xml'
+        }).done(function(data) { // success
+          console.log("success");
+        }).fail(function(data) { // error
+          console.log("fail");
+        });
+      }
+    });
+  }
+
+  // bodyに動的に追加されたスタイルを削除
+  $('body').removeAttr('style');
+
+  // urlのクエリパラメタからidを取得して「your ID」に表示
+  var match = location.search.match(/id=(.*?)(&|$)/);
+  if (match) {
+    var id = match[1];
+    $('#id').text(id);
+  }
+
+  // urlのクエリパラメタからtypeを取得してhtml内に埋め込む
+  $('#type').text(type[1]);
 
 }
