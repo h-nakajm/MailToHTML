@@ -28,11 +28,17 @@
 			}
 			// IDが正しく打ち込まれた場合
 			else {
+				var date = new Date();
+				var seconds = date.getSeconds();
 				var ID = $("#id1").val();
-				var next_page = "http://localhost:8000/000139.html?id=" + ID;
+				if (seconds % 2 == 0) {
+					var next_page = "http://localhost:8000/000139.html?id=" + ID + "&type=static";
+				} else {
+					var next_page = "http://localhost:8000/000139.html?id=" + ID + "&type=anchor";
+				}
 				var result = {
 					"id": ID,
-					"date": new Date(),
+					"date": date,
 					"userAgent": window.navigator.userAgent
 				};
 
