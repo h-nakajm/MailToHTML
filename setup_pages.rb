@@ -4,7 +4,7 @@
 # 整形内容: ページ遷移の追加，ファイル名の変更
 
 # 最後のアンケートページとホスト名
-question_page = "http://sdl.ist.osaka-u.ac.jp"
+question_page = "http://localhost:8000/questionnaire.html"
 host = "http://localhost:8000/"
 
 # カレントディレクトリにあるメールファイルの名前を全て取得
