@@ -2,6 +2,7 @@ var start;
 var dbpath = "http://127.0.0.1:8080/test/results/";
 var ad_dbpath = "http://127.0.0.1:8080/test/ad_clicked";
 var ad_open = "http://sdl.ist.osaka-u.ac.jp";
+var type = location.search.match(/type=(.*?)(&|$)/);
 
 // メール分類ボタンが押された場合
 function categorize() {
@@ -62,24 +63,6 @@ function quit() {
 
 }
 
-var type = location.search.match(/type=(.*?)(&|$)/);
-if (type[1] == "anchor") {
-  // アンカー広告を挿入
-  $(function() {
-    $('.meerkat').meerkat({
-      background: 'url(\'./image/black.png\') repeat-x left top',
-      height: '200px',
-      width: '100%',
-      position: 'bottom',
-      //close: '.close-meerkat',
-      //dontShowAgain: '.dont-show',
-      //animationIn: 'slide',
-      //animationSpeed: 500,
-      //removeCookie: '.reset'
-    }).addClass('pos-bot');
-  });
-}
-
 //ページ読み込み終了時の処理
 window.onload = function() {
 
@@ -112,6 +95,22 @@ window.onload = function() {
       });
     });
   } else if (type[1] == "anchor") {
+    // アンカー広告を挿入
+    $("#anchor_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=\"http://sdl.ist.osaka-u.ac.jp\" target=\"_blank\"><img border=\"0\" width=\"640\" height=\"200\" alt=\"\" src=\"./image/sample_ad01.png\"></a></div>");
+    $(function() {
+      $('.meerkat').meerkat({
+        background: 'url(\'./image/black.png\') repeat-x left top',
+        height: '200px',
+        width: '100%',
+        position: 'bottom'
+        //close: '.close-meerkat',
+        //dontShowAgain: '.dont-show',
+        //animationIn: 'slide',
+        //animationSpeed: 500,
+        //removeCookie: '.reset'
+      }).addClass('pos-bot');
+    });
+
     // アンカー広告の両側の黒い部分が押された場合のページ遷移(新規window)
     $('.meerkat').on({
       'click': function() {
