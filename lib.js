@@ -27,6 +27,7 @@ function categorize() {
         start: start,
         end: end,
         time: end - start,
+        type: $('#type').text(),
         selected: a
       }
 
