@@ -33,13 +33,16 @@
 				var ID = $("#id1").val();
 				if (seconds % 2 == 0) {
 					var next_page = "http://localhost:8000/000139.html?id=" + ID + "&type=static";
+					var type = "static";
 				} else {
 					var next_page = "http://localhost:8000/000139.html?id=" + ID + "&type=anchor";
+					var type = "anchor";
 				}
 				var result = {
 					"id": ID,
 					"date": date,
-					"userAgent": window.navigator.userAgent
+					"userAgent": window.navigator.userAgent,
+					"type": type
 				};
 
 				// 参加者の情報をdbに送る
