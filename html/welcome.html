@@ -5,6 +5,7 @@
 	<script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var dbpath = "http://127.0.0.1:8080/test/participants/";
+		var exp_page = "http://localhost:8000/00046.html";
 
 		// Enterキーでの送信を許さない
 		$(function() {
@@ -32,10 +33,10 @@
 				var seconds = date.getSeconds();
 				var ID = $("#id1").val();
 				if (seconds % 2 == 0) {
-					var next_page = "http://localhost:8000/000139.html?id=" + ID + "&type=static";
+					var next_page = exp_page + "?id=" + ID + "&type=static";
 					var type = "static";
 				} else {
-					var next_page = "http://localhost:8000/000139.html?id=" + ID + "&type=anchor";
+					var next_page = exp_page + "?id=" + ID + "&type=anchor";
 					var type = "anchor";
 				}
 				var result = {
