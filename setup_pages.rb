@@ -30,6 +30,15 @@ input_files.each_with_index{|input_file, index|
   }
 }
 
+# %mail_num%を含む行を検索
+# 分類したメールの数で%mail_num%を置換
+input_contents.each_with_index{|input_content ,index|
+  target = input_content.index{|item|
+    item =~ /%mail_num%/
+  }
+  input_contents[index][target].gsub!(/%mail_num%/, index.to_s)
+}
+
 # <span id="next" hidden>を含む行を探索
 # 次の実験ページのurlを挿入(http://(ホスト名):(ポート番号)/(実験番号).html)
 # 実験中にjsでurlの後ろに「?id=(yourID)」を追加する
