@@ -4,7 +4,7 @@
 	<title>Sign up</title>
 	<script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		var dbpath = "http://127.0.0.1:8080/test/participants/";
+		var dbpath = "http://127.0.0.1:3000/test/participants/";
 		var exp_page = "http://localhost:8000/00010.html";
 
 		// Enterキーでの送信を許さない
@@ -50,9 +50,10 @@
 				$.ajax({
 					url: dbpath,
 					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(result),
-					dataType: 'xml'
+					data: result
+					// contentType: "application/json",
+					// data: JSON.stringify(result),
+					// dataType: 'xml'
 				}).done(function(data) { // success
 					window.location.href = next_page;
 				}).fail(function(data) { // error

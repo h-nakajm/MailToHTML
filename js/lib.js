@@ -1,6 +1,6 @@
 var start;
-var dbpath = "http://127.0.0.1:8080/test/results/";
-var ad_dbpath = "http://127.0.0.1:8080/test/ad_clicked";
+var dbpath = "http://127.0.0.1:3000/test/results/";
+var ad_dbpath = "http://127.0.0.1:3000/test/ad_clicked";
 var ad_open = "http://localhost:8000/clicked.html";
 var type = location.search.match(/type=(.*?)(&|$)/);
 
@@ -35,9 +35,10 @@ function categorize() {
       $.ajax({
         url: dbpath,
         type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(result),
-        dataType: 'xml'
+        data: result
+        // contentType: "application/json",
+        // data: JSON.stringify(result),
+        // dataType: 'xml'
       }).done(function(data) { // success
         window.location.href = next_page;
       }).fail(function(data) { // error
@@ -86,9 +87,10 @@ window.onload = function() {
       $.ajax({
         url: ad_dbpath,
         type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(record),
-        dataType: 'xml'
+        data: record
+        // contentType: "application/json",
+        // data: JSON.stringify(record),
+        // dataType: 'xml'
       }).done(function(data) { // success
         console.log("success");
       }).fail(function(data) { // error
@@ -127,9 +129,10 @@ window.onload = function() {
         $.ajax({
           url: ad_dbpath,
           type: "POST",
-          contentType: "application/json",
-          data: JSON.stringify(record),
-          dataType: 'xml'
+          data: record
+          // contentType: "application/json",
+          // data: JSON.stringify(record),
+          // dataType: 'xml'
         }).done(function(data) { // success
           console.log("success");
         }).fail(function(data) { // error

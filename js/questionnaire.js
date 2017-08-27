@@ -1,4 +1,4 @@
-var dbpath = "http://127.0.0.1:8080/test/questionnaire/";
+var dbpath = "http://127.0.0.1:3000/test/questionnaire/";
 var next_page = "http://sdl.ist.osaka-u.ac.jp";
 
 // Enterキーでの送信を許さない
@@ -38,9 +38,10 @@ function Clicked() {
       $.ajax({
         url: dbpath,
         type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(result),
-        dataType: 'xml'
+        data: result
+        // contentType: "application/json",
+        // data: JSON.stringify(result),
+        // dataType: 'xml'
       }).done(function(data) { // success
         window.location.href = next_page;
       }).fail(function(data) { // error
