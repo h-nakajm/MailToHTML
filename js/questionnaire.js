@@ -1,4 +1,4 @@
-var dbpath = "http://127.0.0.1:3000/test/questionnaire/";
+var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/test/questionnaire/";
 var next_page = "http://sdl.ist.osaka-u.ac.jp";
 
 // Enterキーでの送信を許さない
