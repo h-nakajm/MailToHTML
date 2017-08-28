@@ -1,5 +1,5 @@
-var dbpath = "http://127.0.0.1:3000/test/participants/";
-var exp_page = "http://localhost:8000/00010.html";
+var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/test/participants/";
+var exp_page = "http://sdl.osaka-u.ac.jp/~h-nakajm/exp1/00010.html";
 
 // Enterキーでの送信を許さない
 $(function() {
