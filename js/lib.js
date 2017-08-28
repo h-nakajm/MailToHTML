@@ -1,7 +1,7 @@
 var start;
-var dbpath = "http://127.0.0.1:3000/test/results/";
-var ad_dbpath = "http://127.0.0.1:3000/test/ad_clicked";
-var ad_open = "http://localhost:8000/clicked.html";
+var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/test/results/";
+var ad_dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/test/ad_clicked";
+var ad_open = "http://sdl.osaka-u.ac.jp/~h-nakajm/exp1/clicked.html";
 var type = location.search.match(/type=(.*?)(&|$)/);
 
 // メール分類ボタンが押された場合
