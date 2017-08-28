@@ -4,8 +4,8 @@
 # 整形内容: ページ遷移の追加，ファイル名の変更
 
 # 最後のアンケートページとホスト名
-question_page = "http://localhost:8000/questionnaire.html"
-host = "http://localhost:8000/"
+question_page = "http://sdl.osaka-u.ac.jp/~h-nakajm/exp1/questionnaire.html"
+host = "http://sdl.osaka-u.ac.jp/~h-nakajm/exp1/"
 
 # カレントディレクトリにあるメールファイルの名前を全て取得
 input_files = []
