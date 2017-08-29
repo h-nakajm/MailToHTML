@@ -21,7 +21,7 @@ subject_index = escaped_input.rindex { |item| item =~ /^Subject/ }
 # 最初の</div>の次の行
 div_index = lib.index { |item| item =~ /<\/div>/ }
 
-# libの<body>までを配列outputに入れる
+# libの</div>までを配列outputに入れる
 output = []
 output << lib[0, div_index + 1]
 
