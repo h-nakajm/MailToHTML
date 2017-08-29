@@ -18,18 +18,18 @@ File.open('lib.html', mode = "r") { |f| lib = f.readlines }
 subject_index = escaped_input.rindex { |item| item =~ /^Subject/ }
 
 # 雛形への挿入箇所を検索
-# 最初の</div>の次の行
-div_index = lib.index { |item| item =~ /<\/div>/ }
+# 最初の<hr>の次の行
+hr_index = lib.index { |item| item =~ /<hr>/ }
 
-# libの</div>までを配列outputに入れる
+# libの<hr>までを配列outputに入れる
 output = []
-output << lib[0, div_index + 1]
+output << lib[0, hr_index + 1]
 
 # 最後の「Subject」以降の文面の各行の最後に「</br>」を追加してoutputに追記
 output << escaped_input[subject_index + 1, input.length - 1].map { |item| item + '</br>' }
 
 # outputに雛形の残りを追記
-output << lib[div_index + 1, lib.length - 1]
+output << lib[hr_index + 1, lib.length - 1]
 
 # outputをファイルに出力
 File.open(out_file, mode = "w") { |f| output.each { |s| f.puts(s) } }
