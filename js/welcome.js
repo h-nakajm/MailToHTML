@@ -1,5 +1,5 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/test/participants/";
-var exp_page = "http://sdl.ist.osaka-u.ac.jp/~h-nakajm/exp1/00010.html";
+var exp_page = "./00010.html";
 
 // Enterキーでの送信を許さない
 $(function() {
