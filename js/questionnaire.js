@@ -1,4 +1,4 @@
-var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/test/questionnaire/";
+var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/questionnaire/";
 var next_page = "./finish.html";
 
 // Enterキーでの送信を許さない
