@@ -1,7 +1,7 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/finish/";
 var type = location.search.match(/type=(.*?)(&|$)/);
 var id = location.search.match(/id=(.*?)(&|$)/);
-var next_page = "http://sdl.ist.osaka-u.ac.jp";
+var next_page = "https://www.prolific.ac/submissions/complete?cc=5BBVTAAL";
 
 // 終了ボタンが押された場合
 function Clicked() {
