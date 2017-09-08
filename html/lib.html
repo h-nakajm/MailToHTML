@@ -1,15 +1,20 @@
+<!DOCTYPE Html>
 <html>
 
 <head>
-	<title>Test page</title>
-	<style type="text/css">
-		body {
-			margin: 0 0 0 0;
-		}
-	</style>
-	<script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<script src="./js/jquery.meerkat.1.3.min.js" type="text/javascript"></script>
-	<script src="./js/lib.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Test page</title>
+    <style type="text/css">
+        body {
+            margin: 20 !important;
+        }
+        #meerkat-wrap  {
+            left: 0;
+        }
+    </style>
+    <script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="./js/jquery.meerkat.1.3.min.js" type="text/javascript"></script>
+    <script src="./js/lib.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -35,15 +40,15 @@
 	</br>
 	<H3>Looking at the text of the email, would you categorize it as:</H3>
 
-	<form name="form1">
-		<input type="radio" name="example" value="Personal">Personal</br>
-		<input type="radio" name="example" value="Work-related">Work-related</br>
-		<input type="radio" name="example" value="Legitimate e-Commerce">Legitimate e-Commerce</br>
-		<input type="radio" name="example" value="Spam">Spam</br>
+	<form name="form1" id="categorize">
+		<p><input type="radio" name="example" value="Personal">Personal</p>
+		<p><input type="radio" name="example" value="Work-related">Work-related</p>
+		<p><input type="radio" name="example" value="Legitimate e-Commerce">Legitimate e-Commerce</p>
+		<p><input type="radio" name="example" value="Spam">Spam</p>
 	</form>
 
 	<p>
-		<input type="button" value="Categorize this email" onclick="categorize()">
+		<input type="button" id="done" value="Categorize this email" onclick="categorize()">
 	</p>
 	</br>
 	<H3>Notes:</H3>
