@@ -99,11 +99,11 @@ window.onload = function() {
     });
   } else if (type[1] == "anchor") {
     // アンカー広告を挿入
-    $("#anchor_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img border=\"0\" width=\"640\" height=\"200\" alt=\"\" src=\"./image/sample_ad03.png\"></a></div>");
+    $("#anchor_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad03.png\"></a></div>");
     $(function() {
       $('.meerkat').meerkat({
         background: 'url(\'./image/black.png\') repeat-x left top',
-        height: '200px',
+        //height: '200px',
         width: '100%',
         position: 'bottom'
         //close: '.close-meerkat',
