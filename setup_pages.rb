@@ -30,6 +30,15 @@ input_files.each_with_index{|input_file, index|
   }
 }
 
+# %mail_number%を含む行を検索
+# 現在分類中のメールの番号で%mail_number%を置換
+input_contents.each_with_index{|input_content ,index|
+  target = input_content.index{|item|
+    item =~ /%mail_number%/
+  }
+  input_contents[index][target].gsub!(/%mail_number%/, (index + 1).to_s + '/10')
+}
+
 # %mail_num%を含む行を検索
 # 分類したメールの数で%mail_num%を置換
 input_contents.each_with_index{|input_content ,index|
