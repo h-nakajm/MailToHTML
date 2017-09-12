@@ -1,6 +1,6 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/finish/";
 var type = location.search.match(/type=(.*?)(&|$)/);
-var id = location.search.match(/id=(.*?)(&|$)/);
+var match = location.search.match(/id=(.*?)(&|$)/);
 var next_page = "https://www.prolific.ac/submissions/complete?cc=5BBVTAAL";
 
 // 終了ボタンが押された場合
@@ -9,11 +9,11 @@ function Clicked() {
 
   // Ajaxで送信するデータを作成
   var result = {
-    id: id,
+    id: match[1],
     url: document.location.href,
     date: date,
     userAgent: window.navigator.userAgent,
-    type: type
+    type: type[1]
   }
 
   // 参加者の情報をdbに送る
