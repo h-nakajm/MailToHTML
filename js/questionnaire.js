@@ -1,5 +1,7 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/questionnaire/";
 var next_page = "./finish.html";
+var match = location.search.match(/id=(.*?)(&|$)/);
+var type = location.search.match(/type=(.*?)(&|$)/);
 
 // Enterキーでの送信を許さない
 $(function() {
@@ -52,12 +54,13 @@ function Clicked() {
 
   // Ajaxで送信するデータを作成
   var result = {
-    id: $('#id').text(),
+    id: match[1],
     url: document.location.href,
     date: new Date(),
     ad_selected: a,
     annoyingness: b,
-    impression: $("#text").val()
+    impression: $("#text").val(),
+    type: type[1]
   };
 
   // 作成したデータをAjaxで送信
