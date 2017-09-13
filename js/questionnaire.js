@@ -13,6 +13,22 @@ $(function() {
 function Clicked() {
   var a = "";
   var b = "";
+  var c = "";
+
+  for (var i = 0; i < document.form0.conf_alt.length; i++) {
+
+    // 選択されている場合
+    if (document.form0.elements[i].checked) {
+      // 選択されているボタンを取得
+      c = document.form0.elements[i].value;
+      break;
+    } // 選択されていない場合
+    else if (i == document.form0.conf_alt.length - 1) {
+      window.alert('Please select the button of Q1.');
+      return;
+    }
+
+  }
 
   for (var i = 0; i < document.form1.ads.length; i++) {
 
@@ -31,7 +47,7 @@ function Clicked() {
 
     } // 広告が選択されていない場合
     else if (i == document.form1.ads.length - 1) {
-      window.alert('Please select the button of Q1.');
+      window.alert('Please select the button of Q2.');
       return;
     }
 
@@ -46,7 +62,7 @@ function Clicked() {
       break;
     } // 選択されていない場合
     else if (i == document.form2.alternatives.length - 1) {
-      window.alert('Please select the button of Q2.');
+      window.alert('Please select the button of Q3.');
       return;
     }
 
@@ -61,6 +77,7 @@ function Clicked() {
     innerWidth: window.innerWidth,
     angle: window.screen.orientation.angle,
     date: new Date(),
+    confidence: c,
     ad_selected: a,
     annoyingness: b,
     impression: $("#text").val(),
