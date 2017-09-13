@@ -27,6 +27,10 @@ function categorize() {
         start: start,
         end: end,
         time: end - start,
+        userAgent: window.navigator.userAgent,
+        innerHeight: window.innerHeight,
+        innerWidth: window.innerWidth,
+        angle: window.screen.orientation.angle,
         type: $('#type').text(),
         selected: a
       }
@@ -79,6 +83,10 @@ window.onload = function() {
       var record = {
         id: $('#id').text(),
         url: document.location.href,
+        userAgent: window.navigator.userAgent,
+        innerHeight: window.innerHeight,
+        innerWidth: window.innerWidth,
+        angle: window.screen.orientation.angle,
         date: new Date(),
         type: "static"
       };
@@ -121,6 +129,10 @@ window.onload = function() {
         var record = {
           id: $('#id').text(),
           url: document.location.href,
+          userAgent: window.navigator.userAgent,
+          innerHeight: window.innerHeight,
+          innerWidth: window.innerWidth,
+          angle: window.screen.orientation.angle,
           date: new Date(),
           type: "anchor"
         };

@@ -56,6 +56,10 @@ function Clicked() {
   var result = {
     id: match[1],
     url: document.location.href,
+    userAgent: window.navigator.userAgent,
+    innerHeight: window.innerHeight,
+    innerWidth: window.innerWidth,
+    angle: window.screen.orientation.angle,
     date: new Date(),
     ad_selected: a,
     annoyingness: b,
