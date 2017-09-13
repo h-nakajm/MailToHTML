@@ -1,5 +1,5 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/questionnaire/";
-var next_page = "./finish.html";
+var next_page = "https://www.prolific.ac/submissions/complete?cc=5BBVTAAL";
 var match = location.search.match(/id=(.*?)(&|$)/);
 var type = location.search.match(/type=(.*?)(&|$)/);
 
