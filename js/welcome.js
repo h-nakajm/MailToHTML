@@ -37,6 +37,9 @@ function Clicked() {
       "id": ID,
       "date": date,
       "userAgent": window.navigator.userAgent,
+      "innerHeight": window.innerHeight,
+      "innerWidth": window.innerWidth,
+      "angle": window.screen.orientation.angle,
       "type": type
     };
 
