@@ -4,6 +4,11 @@ var ad_dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/ad_clicked";
 var ad_open = "./clicked.html";
 var type = location.search.match(/type=(.*?)(&|$)/);
 
+// ブラウザの戻るボタンを禁止する
+window.location.hash="no-back-button";
+window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
+
 // メール分類ボタンが押された場合
 function categorize() {
 
