@@ -1,6 +1,17 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/participants/";
 var exp_page = "./00010.html";
 
+$(function () {
+    var ua = navigator.userAgent;
+    if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+        // スマートフォン用コード
+    } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+        // タブレット用コード
+    } else {
+        window.location.href = "http://valkyrie.ics.es.osaka-u.ac.jp/experiment1/pc.html";
+    }
+})
+
 // Enterキーでの送信を許さない
 $(function() {
   $(document).on("keypress", "input:not(.allow_submit)", function(event) {
