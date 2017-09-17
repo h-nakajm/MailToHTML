@@ -80,7 +80,7 @@ function Clicked() {
     userAgent: window.navigator.userAgent,
     innerHeight: window.innerHeight,
     innerWidth: window.innerWidth,
-    angle: window.screen.orientation.angle,
+    //angle: window.screen.orientation.angle,
     date: new Date(),
     confidence: c,
     ad_selected: a,

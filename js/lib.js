@@ -35,7 +35,7 @@ function categorize() {
         userAgent: window.navigator.userAgent,
         innerHeight: window.innerHeight,
         innerWidth: window.innerWidth,
-        angle: window.screen.orientation.angle,
+        //angle: window.screen.orientation.angle,
         type: $('#type').text(),
         selected: a
       }
@@ -91,7 +91,7 @@ window.onload = function() {
         userAgent: window.navigator.userAgent,
         innerHeight: window.innerHeight,
         innerWidth: window.innerWidth,
-        angle: window.screen.orientation.angle,
+        //angle: window.screen.orientation.angle,
         date: new Date(),
         type: "static"
       };
@@ -137,7 +137,7 @@ window.onload = function() {
           userAgent: window.navigator.userAgent,
           innerHeight: window.innerHeight,
           innerWidth: window.innerWidth,
-          angle: window.screen.orientation.angle,
+          //angle: window.screen.orientation.angle,
           date: new Date(),
           type: "anchor"
         };
