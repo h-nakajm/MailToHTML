@@ -33,8 +33,8 @@ function categorize() {
         end: end,
         time: end - start,
         userAgent: window.navigator.userAgent,
-        innerHeight: window.innerHeight,
-        innerWidth: window.innerWidth,
+        height: screen.height,
+        width: screen.width,
         //angle: window.screen.orientation.angle,
         type: $('#type').text(),
         selected: a
@@ -89,8 +89,8 @@ window.onload = function() {
         id: $('#id').text(),
         url: document.location.href,
         userAgent: window.navigator.userAgent,
-        innerHeight: window.innerHeight,
-        innerWidth: window.innerWidth,
+        height: screen.height,
+        width: screen.width,
         //angle: window.screen.orientation.angle,
         date: new Date(),
         type: "static"
@@ -135,8 +135,8 @@ window.onload = function() {
           id: $('#id').text(),
           url: document.location.href,
           userAgent: window.navigator.userAgent,
-          innerHeight: window.innerHeight,
-          innerWidth: window.innerWidth,
+          height: screen.height,
+          width: screen.width,
           //angle: window.screen.orientation.angle,
           date: new Date(),
           type: "anchor"

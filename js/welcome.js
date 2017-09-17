@@ -48,8 +48,8 @@ function Clicked() {
       "id": ID,
       "date": date,
       "userAgent": window.navigator.userAgent,
-      "innerHeight": window.innerHeight,
-      "innerWidth": window.innerWidth,
+      "weight": screen.height,
+      "width": screen.width,
       //"angle": window.screen.orientation.angle,
       "type": type
     };
