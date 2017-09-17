@@ -3,10 +3,12 @@ var next_page = "https://www.prolific.ac/submissions/complete?cc=5BBVTAAL";
 var match = location.search.match(/id=(.*?)(&|$)/);
 var type = location.search.match(/type=(.*?)(&|$)/);
 
-// ブラウザの戻るボタンを禁止する
-window.location.hash="no-back-button";
-window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
-window.onhashchange=function(){window.location.hash="no-back-button";}
+window.onload = function () {
+  // ブラウザの戻るボタンを禁止する
+  window.location.hash="no-back-button";
+  window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+  window.onhashchange=function(){window.location.hash="no-back-button";}
+}
 
 // Enterキーでの送信を許さない
 $(function() {
