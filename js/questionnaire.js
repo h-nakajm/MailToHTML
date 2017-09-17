@@ -80,6 +80,7 @@ function Clicked() {
     userAgent: window.navigator.userAgent,
     height: screen.height,
     width: screen.width,
+    angle: window.orientation,
     //angle: window.screen.orientation.angle,
     date: new Date(),
     confidence: c,

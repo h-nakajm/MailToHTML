@@ -35,7 +35,8 @@ function categorize() {
         userAgent: window.navigator.userAgent,
         height: screen.height,
         width: screen.width,
-        //angle: window.screen.orientation.angle,
+        angle: window.orientation,
+         //angle: window.screen.orientation.angle,
         type: $('#type').text(),
         selected: a
       }
@@ -91,6 +92,7 @@ window.onload = function() {
         userAgent: window.navigator.userAgent,
         height: screen.height,
         width: screen.width,
+        angle: window.orientation,
         //angle: window.screen.orientation.angle,
         date: new Date(),
         type: "static"
@@ -137,6 +139,7 @@ window.onload = function() {
           userAgent: window.navigator.userAgent,
           height: screen.height,
           width: screen.width,
+          angle: window.orientation,
           //angle: window.screen.orientation.angle,
           date: new Date(),
           type: "anchor"

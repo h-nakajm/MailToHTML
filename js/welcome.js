@@ -50,6 +50,7 @@ function Clicked() {
       "userAgent": window.navigator.userAgent,
       "weight": screen.height,
       "width": screen.width,
+      "angle": window.orientation,
       //"angle": window.screen.orientation.angle,
       "type": type
     };
