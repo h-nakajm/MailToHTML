@@ -45,7 +45,7 @@ $(function () {
         });
     } else {
         // パソコン用コード
-        window.location.href = "http://localhost:3000/experiment1/pc.html";
+        window.location.href = "http://localhost:8000/pc.html";
     }
 })
 
