@@ -1,13 +1,50 @@
 var dbpath = "http://localhost:3000/exp1/participants/";
 var exp_page = "./00010.html";
+var count_path = "http://localhost:3000/exp1/count/";
 
 $(function () {
     var ua = navigator.userAgent;
+    var date = new Date();
+    var init_data = {
+      "userAgent": ua,
+      "date": date,
+      "weight": screen.height,
+      "width": screen.width,
+      "angle": window.orientation
+      //"angle": wndow.screen.orientation.angle,
+    };
     if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
         // スマートフォン用コード
+        $.ajax({
+          url: count_path,
+          type: "POST",
+          data: init_data,
+          // contentType: "application/json",
+          // data: JSON.stringify(result),
+          dataType: 'text'
+        }).done(function(data) { // success
+          // 被験者の広告タイプを埋め込む
+          $('#type').text(data);
+        }).fail(function(data) { // error
+          window.alert(textStatus + ": Unable to connect to the server.");
+        });
     } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
         // タブレット用コード
+        $.ajax({
+          url: count_path,
+          type: "POST",
+          data: init_data,
+          // contentType: "application/json",
+          // data: JSON.stringify(result),
+          dataType: 'text'
+        }).done(function(data) { // success
+          // 被験者の広告タイプを埋め込む
+          $('#type').text(data);
+        }).fail(function(data) { // error
+          window.alert(textStatus + ": Unable to connect to the server.");
+        });
     } else {
+        // パソコン用コード
         window.location.href = "http://localhost:3000/experiment1/pc.html";
     }
 })
@@ -35,9 +72,8 @@ function Clicked() {
   // IDが正しく打ち込まれた場合
   else {
     var date = new Date();
-    var seconds = date.getSeconds();
     var ID = $("#id1").val();
-    if (seconds % 2 == 0) {
+    if ($('#type').text() == "static") {
       var next_page = exp_page + "?id=" + ID + "&type=static";
       var type = "static";
     } else {
