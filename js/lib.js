@@ -1,6 +1,6 @@
 var start;
-var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/results/";
-var ad_dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/ad_clicked";
+var dbpath = "http://localhost:3000/exp1/results/";
+var ad_dbpath = "http://localhost:3000/exp1/ad_clicked";
 var ad_open = "./clicked.html";
 var type = location.search.match(/type=(.*?)(&|$)/);
 

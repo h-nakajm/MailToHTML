@@ -1,4 +1,4 @@
-var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp1/participants/";
+var dbpath = "http://localhost:3000/exp1/participants/";
 var exp_page = "./00010.html";
 
 $(function () {
@@ -8,7 +8,7 @@ $(function () {
     } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
         // タブレット用コード
     } else {
-        window.location.href = "http://valkyrie.ics.es.osaka-u.ac.jp/experiment1/pc.html";
+        window.location.href = "http://localhost:3000/experiment1/pc.html";
     }
 })
 
