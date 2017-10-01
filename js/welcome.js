@@ -1,6 +1,6 @@
-var dbpath = "http://localhost:3000/exp1/participants/";
+var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/participants/";
 var exp_page = "./00010.html";
-var count_path = "http://localhost:3000/exp1/count/";
+var count_path = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/count/";
 
 $(function () {
     var ua = navigator.userAgent;
@@ -45,7 +45,7 @@ $(function () {
         });
     } else {
         // パソコン用コード
-        window.location.href = "http://localhost:8000/pc.html";
+        window.location.href = "http://valkyrie.ics.es.osaka-u.ac.jp/experiment2/pc.html";
     }
 })
 
