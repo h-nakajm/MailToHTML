@@ -180,7 +180,7 @@ window.onload = function() {
       }).addClass('pos-bot');
     });
 
-    // アンカー広告の両側の黒い部分が押された場合のページ遷移(新規window)
+    // アッパー広告の両側の黒い部分が押された場合のページ遷移(新規window)
     $('.meerkat').on({
       'click': function() {
         window.open(ad_open);
