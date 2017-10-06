@@ -7,7 +7,7 @@ var type = location.search.match(/type=(.*?)(&|$)/);
 var x;
 var y;
 var n = 15;
-var DEBUG = false;
+var DEBUG = true;
 
 // ブラウザの戻るボタンを禁止する
 window.location.hash = "no-back-button";
@@ -84,7 +84,7 @@ function quit() {
 
 // アンカー広告を挿入する
 function insert_anchor() {
-  $("#anchor_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
+  $("#anchor_ad_space").append("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
   $(function() {
     $('.meerkat').meerkat({
       background: 'url(\'./image/black.png\') repeat-x left top',
@@ -134,8 +134,7 @@ function insert_anchor() {
 
 // アッパー広告を挿入する
 function insert_upper() {
-  $('#upper_ad_space').css('margin-bottom', '200px');
-  $("#upper_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
+  $("#upper_ad_space").append("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
   $(function() {
     $('.meerkat').meerkat({
       background: 'url(\'./image/black.png\') repeat-x left top',
@@ -187,6 +186,8 @@ function insert_upper() {
 window.onload = function() {
 
   start = new Date();
+  if (type[1] == "upper" || type[1] == "scroll" || type[1] == "reverse")
+    $('#upper_ad_space').css('margin-bottom', '200px');
 
   if (type[1] == "static") {
     // 静止広告を挿入
@@ -223,102 +224,9 @@ window.onload = function() {
   } else if (type[1] == "anchor" || type[1] == "reverse") {
     // アンカー広告を挿入
     insert_anchor();
-    // $("#anchor_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
-    // $(function() {
-    //   $('.meerkat').meerkat({
-    //     background: 'url(\'./image/black.png\') repeat-x left top',
-    //     //height: '200px',
-    //     width: '100%',
-    //     position: 'bottom'
-    //     //close: '.close-meerkat',
-    //     //dontShowAgain: '.dont-show',
-    //     //animationIn: 'slide',
-    //     //animationSpeed: 500,
-    //     //removeCookie: '.reset'
-    //   }).addClass('pos-bot');
-    // });
-    //
-    // // アンカー広告の両側の黒い部分が押された場合のページ遷移(新規window)
-    // $('.meerkat').on({
-    //   'click': function() {
-    //     window.open(ad_open);
-    //     var record = {
-    //       id: $('#id').text(),
-    //       url: document.location.href,
-    //       userAgent: window.navigator.userAgent,
-    //       height: screen.height,
-    //       width: screen.width,
-    //       angle: window.orientation,
-    //       //angle: window.screen.orientation.angle,
-    //       date: new Date(),
-    //       type: "anchor"
-    //     };
-    //
-    //     // 広告がクリックされた情報をdbに送る
-    //     $.ajax({
-    //       url: ad_dbpath,
-    //       type: "POST",
-    //       data: record
-    //       // contentType: "application/json",
-    //       // data: JSON.stringify(record),
-    //       // dataType: 'xml'
-    //     }).done(function(data) { // success
-    //       console.log("success");
-    //     }).fail(function(data) { // error
-    //       console.log("fail");
-    //     });
-    //   }
-    // });
   } else if (type[1] == "upper" || type[1] == "scroll") {
     // アッパー広告を挿入
     insert_upper();
-    // $('#upper_ad_space').css('margin-bottom', '200px');
-    // $("#upper_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
-    // $(function() {
-    //   $('.meerkat').meerkat({
-    //     background: 'url(\'./image/black.png\') repeat-x left top',
-    //     //height: '200px',
-    //     width: '100%',
-    //     position: 'top'
-    //     //close: '.close-meerkat',
-    //     //dontShowAgain: '.dont-show',
-    //     //animationIn: 'slide',
-    //     //animationSpeed: 500,
-    //     //removeCookie: '.reset'
-    //   }).addClass('pos-bot');
-    // });
-    //
-    // // アッパー広告の両側の黒い部分が押された場合のページ遷移(新規window)
-    // $('.meerkat').on({
-    //   'click': function() {
-    //     window.open(ad_open);
-    //     var record = {
-    //       id: $('#id').text(),
-    //       url: document.location.href,
-    //       userAgent: window.navigator.userAgent,
-    //       height: screen.height,
-    //       width: screen.width,
-    //       angle: window.orientation,
-    //       //angle: window.screen.orientation.angle,
-    //       date: new Date(),
-    //       type: "upper"
-    //     };
-    //
-    //     // 広告がクリックされた情報をdbに送る
-    //     $.ajax({
-    //       url: ad_dbpath,
-    //       type: "POST",
-    //       data: record
-    //       // contentType: "application/json",
-    //       // data: JSON.stringify(record),
-    //       // dataType: 'xml'
-    //     }).done(function(data) { // success
-    //       console.log("success");
-    //     }).fail(function(data) { // error
-    //       console.log("fail");
-    //     });
-    //   }
-    // });
   }
 
   // bodyに動的に追加されたスタイルを削除
@@ -357,6 +265,28 @@ window.onload = function() {
 
     console.log(' x: ' + (x[x.length - 1] - x[0]) +
       '  y:' + (y[y.length - 1] - y[0]));
+
+    if (type[1] == "scroll") {
+      if (y[y.length - 1] - y[0] > 0) {
+        $("#upper_ad_space").empty();
+        if ($("#anchor_ad_space").children().length == 0)
+          insert_anchor();
+      } else {
+        $("#anchor_ad_space").empty();
+        if ($("#upper_ad_space").children().length == 0)
+          insert_upper();
+      }
+    } else if (type[1] == "reverse") {
+      if (y[y.length - 1] - y[0] > 0) {
+        $("#anchor_ad_space").empty();
+        if ($("#upper_ad_space").children().length == 0)
+          insert_upper();
+      } else {
+        $("#upper_ad_space").empty();
+        if ($("#anchor_ad_space").children().length == 0)
+          insert_anchor();
+      }
+    }
 
   });
 
