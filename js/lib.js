@@ -5,9 +5,11 @@ var ad_open = "./clicked.html";
 var type = location.search.match(/type=(.*?)(&|$)/);
 
 // ブラウザの戻るボタンを禁止する
-window.location.hash="no-back-button";
-window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
-window.onhashchange=function(){window.location.hash="no-back-button";}
+window.location.hash = "no-back-button";
+window.location.hash = "Again-No-back-button"; //again because google chrome don't insert first hash into history
+window.onhashchange = function() {
+  window.location.hash = "no-back-button";
+}
 
 // メール分類ボタンが押された場合
 function categorize() {
@@ -36,7 +38,7 @@ function categorize() {
         height: screen.height,
         width: screen.width,
         angle: window.orientation,
-         //angle: window.screen.orientation.angle,
+        //angle: window.screen.orientation.angle,
         type: $('#type').text(),
         selected: a
       }
@@ -143,6 +145,55 @@ window.onload = function() {
           //angle: window.screen.orientation.angle,
           date: new Date(),
           type: "anchor"
+        };
+
+        // 広告がクリックされた情報をdbに送る
+        $.ajax({
+          url: ad_dbpath,
+          type: "POST",
+          data: record
+          // contentType: "application/json",
+          // data: JSON.stringify(record),
+          // dataType: 'xml'
+        }).done(function(data) { // success
+          console.log("success");
+        }).fail(function(data) { // error
+          console.log("fail");
+        });
+      }
+    });
+  } else if (type[1] == "upper") {
+    // アッパー広告を挿入
+    $('#upper_ad_space').css('margin-bottom', '200px');
+    $("#upper_ad_space").after("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
+    $(function() {
+      $('.meerkat').meerkat({
+        background: 'url(\'./image/black.png\') repeat-x left top',
+        //height: '200px',
+        width: '100%',
+        position: 'top'
+        //close: '.close-meerkat',
+        //dontShowAgain: '.dont-show',
+        //animationIn: 'slide',
+        //animationSpeed: 500,
+        //removeCookie: '.reset'
+      }).addClass('pos-bot');
+    });
+
+    // アンカー広告の両側の黒い部分が押された場合のページ遷移(新規window)
+    $('.meerkat').on({
+      'click': function() {
+        window.open(ad_open);
+        var record = {
+          id: $('#id').text(),
+          url: document.location.href,
+          userAgent: window.navigator.userAgent,
+          height: screen.height,
+          width: screen.width,
+          angle: window.orientation,
+          //angle: window.screen.orientation.angle,
+          date: new Date(),
+          type: "upper"
         };
 
         // 広告がクリックされた情報をdbに送る
