@@ -266,6 +266,7 @@ window.onload = function() {
     console.log(' x: ' + (x[x.length - 1] - x[0]) +
       '  y:' + (y[y.length - 1] - y[0]));
 
+    // 広告タイプとスクロール方向に応じて広告の位置を変更
     if (type[1] == "scroll") {
       if (y[y.length - 1] - y[0] > 0) {
         $("#upper_ad_space").empty();
