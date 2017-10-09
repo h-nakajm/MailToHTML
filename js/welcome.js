@@ -98,7 +98,7 @@ function Clicked() {
       data: result
       // contentType: "application/json",
       // data: JSON.stringify(result),
-      // dataType: 'xml'
+      dataType: 'text'
     }).done(function(data) { // success
       window.location.href = next_page;
     }).fail(function(data) { // error
