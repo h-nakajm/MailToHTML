@@ -1,4 +1,4 @@
-var dbpath = "http://localhost:3000/exp2/questionnaire/";
+var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/questionnaire/";
 var next_page = "https://www.prolific.ac/submissions/complete?";
 var match = location.search.match(/id=(.*?)(&|$)/);
 var type = location.search.match(/type=(.*?)(&|$)/);
