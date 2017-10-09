@@ -1,6 +1,6 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/participants/";
 var exp_page = "./00010.html";
-var count_path = "http://valkyrie.ics.es.osaka-u.ac.jp/count/";
+var count_path = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/count/";
 
 $(function () {
     var ua = navigator.userAgent;
@@ -24,6 +24,7 @@ $(function () {
           dataType: 'text'
         }).done(function(data) { // success
           // 被験者の広告タイプを埋め込む
+          // console.log("returned: " + data);
           $('#type').text(data);
         }).fail(function(data) { // error
           window.alert(textStatus + ": Unable to connect to the server.");
@@ -39,6 +40,7 @@ $(function () {
           dataType: 'text'
         }).done(function(data) { // success
           // 被験者の広告タイプを埋め込む
+          // console.log("returned: " + data);
           $('#type').text(data);
         }).fail(function(data) { // error
           window.alert(textStatus + ": Unable to connect to the server.");
@@ -76,9 +78,18 @@ function Clicked() {
     if ($('#type').text() == "static") {
       var next_page = exp_page + "?id=" + ID + "&type=static";
       var type = "static";
-    } else {
+    } else if ($('#type').text() == "anchor") {
       var next_page = exp_page + "?id=" + ID + "&type=anchor";
       var type = "anchor";
+    } else if ($('#type').text() == "upper") {
+      var next_page = exp_page + "?id=" + ID + "&type=upper";
+      var type = "upper";
+    } else if ($('#type').text() == "scroll") {
+      var next_page = exp_page + "?id=" + ID + "&type=scroll";
+      var type = "scroll";
+    } else {
+      var next_page = exp_page + "?id=" + ID + "&type=reverse";
+      var type = "reverse";
     }
     var result = {
       "id": ID,
@@ -98,7 +109,7 @@ function Clicked() {
       data: result
       // contentType: "application/json",
       // data: JSON.stringify(result),
-      dataType: 'text'
+      // dataType: 'text'
     }).done(function(data) { // success
       window.location.href = next_page;
     }).fail(function(data) { // error
