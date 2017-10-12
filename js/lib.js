@@ -4,9 +4,9 @@ var ad_dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/ad_clicked";
 var ad_open = "./clicked.html";
 var type = location.search.match(/type=(.*?)(&|$)/);
 
-var x;
-var y;
-var n = 50;
+var basex;
+var basey;
+var scrollMargin = 50;
 var DEBUG = true;
 
 // ブラウザの戻るボタンを禁止する
@@ -243,51 +243,41 @@ window.onload = function() {
 
   // スクロール方向の取得
   $('body').bind('touchstart', function(e) {
-    x = [];
-    y = [];
-    for (var i = 0; i < n; i++) {
-      x.push(e.originalEvent.touches[0].pageX);
-      y.push(e.originalEvent.touches[0].pageY);
-    }
+    basex = window.scrollX;
+    basey = window.scrollY;
   });
-  $('body').bind('touchmove', function(e) {
-    x.pop();
-    y.pop();
-    x.unshift(e.originalEvent.touches[0].pageX);
-    y.unshift(e.originalEvent.touches[0].pageY);
+  document.addEventListener('scroll', function(e) {
+    deltax = basex - window.scrollX;
+    deltay = basey - window.scrollY;
+
     if (DEBUG) {
-      console.log('--------------------');
-      for (var i = 0; i < x.length; i++) {
-        console.log(i + ') x: ' + x[i] + '  y:' + y[i]);
-      }
+      console.log('>>' +
+        basex + '->' + window.scrollX + ' (' + deltax + ')   ' +
+        basey + '->' + window.scrollY + ' (' + deltay + ')');
     }
-
-    console.log(' x: ' + (x[x.length - 1] - x[0]) +
-      '  y:' + (y[y.length - 1] - y[0]));
-
     // 広告タイプとスクロール方向に応じて広告の位置を変更
-    if (type[1] == "scroll") {
-      if (y[y.length - 1] - y[0] > 0) {
+    if (type[1] == "reverse") {
+      if (deltay > scrollMargin) {
         $("#upper_ad_space").empty();
         if ($("#anchor_ad_space").children().length == 0)
           insert_anchor();
-      } else {
+      } else if (deltay < -1 * scrollMargin) {
         $("#anchor_ad_space").empty();
         if ($("#upper_ad_space").children().length == 0)
           insert_upper();
       }
-    } else if (type[1] == "reverse") {
-      if (y[y.length - 1] - y[0] > 0) {
+    } else if (type[1] == "scroll") {
+      if (deltay > scrollMargin) {
         $("#anchor_ad_space").empty();
         if ($("#upper_ad_space").children().length == 0)
           insert_upper();
-      } else {
+      } else if (deltay < -1 * scrollMargin) {
         $("#upper_ad_space").empty();
         if ($("#anchor_ad_space").children().length == 0)
           insert_anchor();
       }
     }
 
-  });
+  }, false);
 
 }
