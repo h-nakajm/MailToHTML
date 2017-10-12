@@ -6,7 +6,7 @@ var type = location.search.match(/type=(.*?)(&|$)/);
 
 var x;
 var y;
-var n = 15;
+var n = 50;
 var DEBUG = true;
 
 // ブラウザの戻るボタンを禁止する
@@ -16,7 +16,6 @@ window.onhashchange = function() {
   window.location.hash = "no-back-button";
 }
 
-// メール分類ボタンが押された場合
 function categorize() {
 
   var a = "";
