@@ -31,20 +31,7 @@ $(function () {
         });
     } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
         // タブレット用コード
-        $.ajax({
-          url: count_path,
-          type: "POST",
-          data: init_data,
-          // contentType: "application/json",
-          // data: JSON.stringify(result),
-          dataType: 'text'
-        }).done(function(data) { // success
-          // 被験者の広告タイプを埋め込む
-          // console.log("returned: " + data);
-          $('#type').text(data);
-        }).fail(function(data) { // error
-          window.alert(textStatus + ": Unable to connect to the server.");
-        });
+        window.location.href = "http://valkyrie.ics.es.osaka-u.ac.jp/experiment2/pc.html";
     } else {
         // パソコン用コード
         window.location.href = "http://valkyrie.ics.es.osaka-u.ac.jp/experiment2/pc.html";
