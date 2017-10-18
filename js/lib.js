@@ -242,7 +242,7 @@ window.onload = function() {
   $('#type').text(type[1]);
 
   // スクロール方向の取得
-  $('body').bind('touchstart', function(e) {
+  $('.inner_body').bind('touchstart', function(e) {
     basex = window.scrollX;
     basey = window.scrollY;
   });
