@@ -7,7 +7,7 @@ var type = location.search.match(/type=(.*?)(&|$)/);
 var basex;
 var basey;
 var scrollMargin = 50;
-var DEBUG = true;
+var DEBUG = false;
 
 // ブラウザの戻るボタンを禁止する
 window.location.hash = "no-back-button";
@@ -19,67 +19,76 @@ window.onhashchange = function() {
 function categorize() {
 
   var a = "";
+  var b = "";
 
   for (var i = 0; i < document.form1.example.length; i++) {
 
-    // ボタンが選択されている場合
+    // Q1のボタンが選択されている場合
     if (document.form1.elements[i].checked) {
 
-      var end = new Date();
-      var next_page = $('#next').text() + '?id=' + $('#id').text() + '&type=' + $('#type').text();
-
-      // 選択されているボタンを取得
       a = document.form1.elements[i].value;
 
-      // Ajaxで送信するデータを作成
-      var result = {
-        id: $('#id').text(),
-        url: document.location.href,
-        start: start,
-        end: end,
-        time: end - start,
-        userAgent: window.navigator.userAgent,
-        height: screen.height,
-        width: screen.width,
-        angle: window.orientation,
-        //angle: window.screen.orientation.angle,
-        type: $('#type').text(),
-        selected: a
+      for (var j = 0; j < document.form2.q2.length; j++) {
+
+        // Q2のボタンが選択されている場合
+        if (document.form2.elements[j].checked) {
+
+          b = document.form2.elements[j].value;
+          var end = new Date();
+          next_page = $('#next').text() + '?id=' + $('#id').text() + '&type=' + $('#type').text();
+
+          // Ajaxで送信するデータを作成
+          var result = {
+            id: $('#id').text(),
+            url: document.location.href,
+            start: start,
+            end: end,
+            time: end - start,
+            userAgent: window.navigator.userAgent,
+            height: screen.height,
+            width: screen.width,
+            angle: window.orientation,
+            //angle: window.screen.orientation.angle,
+            type: $('#type').text(),
+            selected: a,
+            q2: b
+          }
+
+          // 作成したデータをAjaxで送信
+          $.ajax({
+            url: dbpath,
+            type: "POST",
+            data: result
+            // contentType: "application/json",
+            // data: JSON.stringify(result),
+            // dataType: 'xml'
+          }).done(function(data) { // success
+            window.location.href = next_page;
+          }).fail(function(data) { // error
+            window.alert("Unable to connect to the server.");
+          });
+
+          return;
+
+        } else if (j == document.form2.q2.length - 1) {
+
+          window.alert('Please answer the Q2.');
+          return;
+
+        }
       }
-
-      // 作成したデータをAjaxで送信
-      $.ajax({
-        url: dbpath,
-        type: "POST",
-        data: result
-        // contentType: "application/json",
-        // data: JSON.stringify(result),
-        // dataType: 'xml'
-      }).done(function(data) { // success
-        window.location.href = next_page;
-      }).fail(function(data) { // error
-        window.alert(textStatus + ": Unable to connect to the server.");
-      });
-
-      break;
 
       // ボタンが選択されていない場合
     } else if (i == document.form1.example.length - 1) {
 
-      window.alert('Please select the button.');
+      window.alert('Please answer the Q1.');
+      return;
 
     }
 
   }
 
-}
-
-// 途中でやめるボタンが押された場合
-function quit() {
-
-  window.confirm('quit');
-
-}
+};
 
 // アンカー広告を挿入する
 function insert_anchor() {
