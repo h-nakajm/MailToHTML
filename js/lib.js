@@ -92,7 +92,7 @@ function categorize() {
 
 // アンカー広告を挿入する
 function insert_anchor() {
-  $("#anchor_ad_space").append("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
+  $("#anchor_ad_space").append("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad06.png\"></a></div>");
   $(function() {
     $('.meerkat').meerkat({
       background: 'url(\'./image/black.png\') repeat-x left top',
@@ -142,7 +142,7 @@ function insert_anchor() {
 
 // アッパー広告を挿入する
 function insert_upper() {
-  $("#upper_ad_space").append("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad05.png\"></a></div>");
+  $("#upper_ad_space").append("<div style=\"text-align: center;\" class=\"meerkat\"><a href=" + ad_open + " target=\"_blank\"><img id=\"anchor_ad\" border=\"0\" width=\"100%\" height=\"10%\" alt=\"\" src=\"./image/sample_ad06.png\"></a></div>");
   $(function() {
     $('.meerkat').meerkat({
       background: 'url(\'./image/black.png\') repeat-x left top',
@@ -199,7 +199,7 @@ window.onload = function() {
 
   if (type[1] == "static") {
     // 静止広告を挿入
-    $("#static_ad_space").after("<a href=" + ad_open + " target=\"_blank\"><img id=\"static_ad\" width=\"640\" src=\"./image/sample_ad05.png\"></a>");
+    $("#static_ad_space").after("<a href=" + ad_open + " target=\"_blank\"><img id=\"static_ad\" width=\"640\" src=\"./image/sample_ad06.png\"></a>");
 
     // 静止広告がクリックされた時の処理
     $("#static_ad").on('click', function() {
