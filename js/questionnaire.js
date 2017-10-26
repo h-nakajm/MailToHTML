@@ -1,5 +1,5 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/questionnaire/";
-var next_page = "https://www.prolific.ac/submissions/complete?";
+var next_page = "https://www.prolific.ac/submissions/complete?cc=VVNIKISP";
 var match = location.search.match(/id=(.*?)(&|$)/);
 var type = location.search.match(/type=(.*?)(&|$)/);
 
@@ -103,6 +103,6 @@ function Clicked() {
   }).done(function(data) { // success
     window.location.href = next_page;
   }).fail(function(data) { // error
-    window.alert(textStatus + ": Unable to connect to the server.");
+    window.alert("Unable to connect to the server.");
   });
 }
