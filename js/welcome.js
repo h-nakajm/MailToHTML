@@ -1,5 +1,6 @@
 var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/participants/";
 var exp_page = "./00010.html";
+var error_page = "./error.html";
 var count_path = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/count/";
 
 $(function () {
@@ -93,14 +94,19 @@ function Clicked() {
     $.ajax({
       url: dbpath,
       type: "POST",
-      data: result
+      data: result,
       // contentType: "application/json",
       // data: JSON.stringify(result),
-      // dataType: 'text'
+      dataType: 'text'
     }).done(function(data) { // success
-      window.location.href = next_page;
+      if (data == "OK")
+        window.location.href = next_page;
+      else if (data == "NG")
+        window.location.href = error_page;
+      else
+        window.alert("Unable to connect to the server.");
     }).fail(function(data) { // error
-      window.alert(textStatus + ": Unable to connect to the server.");
+      window.alert("Unable to connect to the server.");
     });
   }
 }
