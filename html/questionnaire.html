@@ -1,10 +1,15 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Questionnaire</title>
   <script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
   <script src="./js/questionnaire.js" type="text/javascript"></script>
   <style type="text/css">
+    body {
+      margin: 3% !important;
+    }
+
     .ads {
       display: none;
     }
@@ -15,77 +20,85 @@
     }
 
     .ads:checked+.ads_image {
-      border: 5px #ff0000 solid;
+      border: 5px #008000 solid;
       background-color: #ffeeee;
     }
+
+    #text {
+      width: 100%;
+    }
+
+    .ads_image {
+      width: 95%;
+      height: auto;
+    }
+
+    table {}
   </style>
 </head>
 
 <body>
+  <H2>Please answer the questions about this experiment.</H2>
+  <hr>
+
   <p>
-    <H3>Q1. Which advertisement was shown in the previous pages? (<u><font color="red">Don't go back previous pages!</font></u>)
+    <H3>Q1. Are you confident of your answers?</H3>
+    <div id="confidence">
+      <form name="form0">
+        <p><input type="radio" name="conf_alt" value="1" id="conf-alt1" class="conf-alternatives"><label for="conf-alt1">Not at all</label></p>
+        <p><input type="radio" name="conf_alt" value="2" id="conf-alt2" class="conf-alternatives"><label for="conf-alt2">A little</label></p>
+        <p><input type="radio" name="conf_alt" value="3" id="conf-alt3" class="conf-alternatives"><label for="conf-alt3">Quite a lot</label></p>
+        <p><input type="radio" name="conf_alt" value="4" id="conf-alt4" class="conf-alternatives"><label for="conf-alt4">Very much</label></p>
+      </form>
+    </div>
+  </p>
+
+  <p>
+    <H3>Q2. Which advertisement was shown in the previous pages? (<u><font color="red">Don't go back previous pages!</font></u>)
     </H3>
     <div id="select">
       <form name="form1">
-
-        <label for="ad1">
-          <input type="radio" name="ads" value="ad1" id="ad1" class="ads"><img src="./image/sample_ad01.png" class="ads_image">
-        </label>
-        <label for="ad2">
-          <input type="radio" name="ads" value="ad2" id="ad2" class="ads"><img src="./image/sample_ad02.png" class="ads_image">
-        </label>
-        <label for="ad3">
-          <input type="radio" name="ads" value="ad3" id="ad3" class="ads"><img src="./image/sample_ad03.png" class="ads_image">
-        </label>
-
-        <!-- </br> -->
-
-        <label for="ad4">
-          <input type="radio" name="ads" value="ad4" id="ad4" class="ads"><img src="./image/sample_ad04.png" class="ads_image">
-        </label>
-        <label for="ad5">
-          <input type="radio" name="ads" value="ad5" id="ad5" class="ads"><img src="./image/sample_ad05.png" class="ads_image">
-        </label>
-        <label for="ad6">
-          <input type="radio" name="ads" value="ad6" id="ad6" class="ads"><img src="./image/sample_ad06.png" class="ads_image">
-        </label>
-
-        <!-- </br> -->
-
-        <label for="ad7">
-          <input type="radio" name="ads" value="ad7" id="ad7" class="ads"><img src="./image/sample_ad07.png" class="ads_image">
-        </label>
-        <label for="ad8">
-          <input type="radio" name="ads" value="ad8" id="ad8" class="ads"><img src="./image/sample_ad08.png" class="ads_image">
-        </label>
-        <label for="ad9">
-          <input type="radio" name="ads" value="ad9" id="ad9" class="ads"><img src="./image/sample_ad09.png" class="ads_image">
-        </label>
-
+        <table>
+          <tr>
+            <td><label for="ad1"><input type="radio" name="ads" value="ad1" id="ad1" class="ads"><img src="./image/sample_ad01.png" class="ads_image"></label></td>
+            <td><label for="ad2"><input type="radio" name="ads" value="ad2" id="ad2" class="ads"><img src="./image/sample_ad02.png" class="ads_image"></label></td>
+          </tr>
+          <tr>
+            <td><label for="ad3"><input type="radio" name="ads" value="ad3" id="ad3" class="ads"><img src="./image/sample_ad03.png" class="ads_image"></label></td>
+            <td><label for="ad4"><input type="radio" name="ads" value="ad4" id="ad4" class="ads"><img src="./image/sample_ad04.png" class="ads_image"></label></td>
+          </tr>
+          <tr>
+            <td><label for="ad5"><input type="radio" name="ads" value="ad5" id="ad5" class="ads"><img src="./image/sample_ad05.png" class="ads_image"></label></td>
+            <td><label for="ad6"><input type="radio" name="ads" value="ad6" id="ad6" class="ads"><img src="./image/sample_ad06.png" class="ads_image"></label></td>
+          </tr>
+          <tr>
+            <td><label for="ad7"><input type="radio" name="ads" value="ad7" id="ad7" class="ads"><img src="./image/sample_ad07.png" class="ads_image"></label></td>
+            <td><label for="ad8"><input type="radio" name="ads" value="ad8" id="ad8" class="ads"><img src="./image/sample_ad08.png" class="ads_image"></label></td>
+          </tr>
+        </table>
       </form>
     </div>
   </p>
 
   <p>
-    <H3>Q2. How much annoying was the advertisement?</H3>
+    <H3>Q3. How much annoying was the advertisement?</H3>
     <div id="alternatives">
       <form name="form2">
-        <input type="radio" name="alternatives" value="1" id="alt1" class="alternatives">Not at all annoying</br>
-        <input type="radio" name="alternatives" value="2" id="alt2" class="alternatives">Slightly annoying</br>
-        <input type="radio" name="alternatives" value="3" id="alt3" class="alternatives">Neutral</br>
-        <input type="radio" name="alternatives" value="4" id="alt4" class="alternatives">Very annoying</br>
-        <input type="radio" name="alternatives" value="5" id="alt5" class="alternatives">Extremely annoying</br>
+        <p><input type="radio" name="alternatives" value="1" id="alt1" class="alternatives"><label for="alt1">Not at all annoying</label></p>
+        <p><input type="radio" name="alternatives" value="2" id="alt2" class="alternatives"><label for="alt2">Slightly annoying</label></p>
+        <p><input type="radio" name="alternatives" value="3" id="alt3" class="alternatives"><label for="alt3">Very annoying</label></p>
+        <p><input type="radio" name="alternatives" value="4" id="alt4" class="alternatives"><label for="alt4">Extremely annoying</label></p>
       </form>
     </div>
   </p>
 
   <p>
-    <H3>Q3. What did you think about the advertisement that appeared in the previous pages?<H3>
+    <H3>Q4. What did you think about the advertisement that appeared in the previous pages?<H3>
   </p>
-    <textarea name="msg" id="text" cols=80 rows=4 required></textarea>
+    <textarea name="msg" id="text" rows=4 required></textarea>
 
   <p>
-    <input type="submit" value="submit" onclick="Clicked()">
+    <input type="submit" value="submit and go back to Prolific" onclick="Clicked()">
   </p>
 
 </body>

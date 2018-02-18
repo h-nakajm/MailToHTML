@@ -1,72 +1,97 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-	<title>Test page</title>
-	<style type="text/css">
-		body {
-			margin: 0 0 0 0;
-		}
-	</style>
-	<script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<script src="./js/jquery.meerkat.1.3.min.js" type="text/javascript"></script>
-	<script src="./js/lib.js" type="text/javascript"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Test page</title>
+  <style type="text/css">
+    body {
+      margin: 3% !important;
+    }
+
+    #meerkat-container {
+      max-height: 200px;
+    }
+
+    #meerkat-wrap {
+      left: 0;
+    }
+
+    #anchor_ad {
+      max-width: 640px;
+      max-height: 200px;
+    }
+
+    #static_ad {
+      width: 100%;
+      max-width: 640px;
+    }
+  </style>
+  <!-- script src="./js/jquery-3.2.1.min.js" type="text/javascript"></script -->
+  <script src="//code.jquery.com/jquery-1.8.1.min.js"></script>
+  <script src="./js/jquery.meerkat.1.3.min.js" type="text/javascript"></script>
+  <script src="./js/lib.js" type="text/javascript"></script>
 </head>
 
 <body>
 
-	<div align="right">
-		your ID:
-		<span id="id"></span></br>
-		<span id="next" hidden></span>
-		<span id="type" hidden></span>
-	</div>
+  <div class="inner_body">
 
-	<p>
-		<H2>Read the email and choose the best category from among alternatives below.</H2>
-	</p>
-	<hr>
+    <div id="upper_ad_space"></div>
 
-	</br>
-	</br>
-	<div id="static_ad_space">
-	</div>
-	</br>
-	<hr>
-	</br>
-	<H3>Looking at the text of the email, would you categorize it as:</H3>
+    <div align="right">
+      mail number:
+      <span id="mail_number">%mail_number%</span></br>
+      your ID:
+      <span id="id"></span></br>
+      <span id="next" hidden></span>
+      <span id="type" hidden></span>
+    </div>
 
-	<form name="form1">
-		<input type="radio" name="example" value="Personal">Personal</br>
-		<input type="radio" name="example" value="Work-related">Work-related</br>
-		<input type="radio" name="example" value="Legitimate e-Commerce">Legitimate e-Commerce</br>
-		<input type="radio" name="example" value="Spam">Spam</br>
-	</form>
+    <p>
+      <H2>Read the email and answer the questions below.</H2>
+    </p>
+    <hr>
 
-	<p>
-		<input type="button" value="Categorize this email" onclick="categorize()">
-	</p>
-	</br>
-	<H3>Notes:</H3>
+    </br>
+    </br>
+    <div id="static_ad_space">
+    </div>
+    </br>
+    <hr>
+    </br>
+    <H3>Q1. Looking at the text of the email, would you categorize it as:</H3>
 
-	<ul>
-		<li>You have categolized %mail_num% emails so far.</li>
-		<li>You are earning a bonus of %d cents after every email you categorize.</li>
-		<li>To ensure accuracy of responeses, we will check the accuracy of a random sample of your work.</li>
-		<li>There is a limit of 1000 emails per contributer. Please do not attempt more.</li>
-		<li>These emails have been released to the public domain. Phone numbers have been removed from these emails, and the company name changed to MegaCorp.</li>
-		<li>When you are done categorizing all the emails you wish to complete, click Stop Categorizing Emails and Complete Task below.</li>
-	</ul>
+    <form name="form1" id="categorize">
+      <p><input type="radio" name="example" value="Personal" id="personal"><label for="personal">Personal</label></p>
+      <p><input type="radio" name="example" value="Work-related" id="work"><label for="work">Work-related</label></p>
+      <p><input type="radio" name="example" value="Legitimate e-Commerce" id="legitimate"><label for="legitimate">Legitimate e-Commerce</label></p>
+      <p><input type="radio" name="example" value="Spam" id="spam"><label for="spam">Spam</label></p>
+    </form>
 
-	<p align="right" style="margin-bottom:200px">
-		<input type="button" value="Stop categorizing emails and complete task" onclick="quit()">
-	</p>
+    %Q2%
 
-	<p>
-		&copy; Hiroki Nakajima
-	</p>
+    <p>
+      <input type="button" id="done" value="submit and next" onclick="categorize()">
+    </p>
+    </br>
+    <H3>Notes:</H3>
 
-	<div id="anchor_ad_space">
-	</div>
+    <ul>
+      <li>You have categolized %mail_num% emails so far.</li>
+      <li>To ensure accuracy of responeses, we will check the accuracy of a random sample of your work.</li>
+      <li>These emails have been released to the public domain. </li>
+    </ul>
+
+    <p style="margin-bottom:200px"></p>
+
+    <p>
+      &copy; Hiroki Nakajima
+    </p>
+
+    <div id="anchor_ad_space"></div>
+
+  </div>
 
 </body>
 
