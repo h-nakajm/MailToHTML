@@ -12,7 +12,7 @@ input.each { |item| escaped_input << CGI.escapeHTML(item) }
 
 # 雛形を配列に読み込む
 lib = []
-File.open('lib.html', mode = "r") { |f| lib = f.readlines }
+File.open('./html/lib.html', mode = "r") { |f| lib = f.readlines }
 
 # メール内の最後のSubjectを検索
 subject_index = escaped_input.rindex { |item| item =~ /^Subject/ }
