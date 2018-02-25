@@ -1,3 +1,5 @@
 test/
-out/
+out/*html
+out/js/*js
+out/image/
 *.tar
