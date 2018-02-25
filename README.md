@@ -23,3 +23,6 @@ git clone https://github.com/h-nakajm/MailToHTML.git
 cd MailToHTML
 ```
 
+## License
+
+MIT

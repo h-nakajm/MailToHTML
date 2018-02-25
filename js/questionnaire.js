@@ -1,5 +1,14 @@
-var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/test/questionnaire/";
-var next_page = "./finish.html";
+var dbpath = "http://valkyrie.ics.es.osaka-u.ac.jp/exp2/questionnaire/";
+var next_page = "https://www.prolific.ac/submissions/complete?cc=VVNIKISP";
+var match = location.search.match(/id=(.*?)(&|$)/);
+var type = location.search.match(/type=(.*?)(&|$)/);
+
+window.onload = function () {
+  // ブラウザの戻るボタンを禁止する
+  window.location.hash="no-back-button";
+  window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+  window.onhashchange=function(){window.location.hash="no-back-button";}
+}
 
 // Enterキーでの送信を許さない
 $(function() {
@@ -11,6 +20,22 @@ $(function() {
 function Clicked() {
   var a = "";
   var b = "";
+  var c = "";
+
+  for (var i = 0; i < document.form0.conf_alt.length; i++) {
+
+    // 選択されている場合
+    if (document.form0.elements[i].checked) {
+      // 選択されているボタンを取得
+      c = document.form0.elements[i].value;
+      break;
+    } // 選択されていない場合
+    else if (i == document.form0.conf_alt.length - 1) {
+      window.alert('Please select the button of Q1.');
+      return;
+    }
+
+  }
 
   for (var i = 0; i < document.form1.ads.length; i++) {
 
@@ -29,7 +54,7 @@ function Clicked() {
 
     } // 広告が選択されていない場合
     else if (i == document.form1.ads.length - 1) {
-      window.alert('Please select the button of Q1.');
+      window.alert('Please select the button of Q2.');
       return;
     }
 
@@ -44,7 +69,7 @@ function Clicked() {
       break;
     } // 選択されていない場合
     else if (i == document.form2.alternatives.length - 1) {
-      window.alert('Please select the button of Q2.');
+      window.alert('Please select the button of Q3.');
       return;
     }
 
@@ -52,12 +77,19 @@ function Clicked() {
 
   // Ajaxで送信するデータを作成
   var result = {
-    id: $('#id').text(),
+    id: match[1],
     url: document.location.href,
+    userAgent: window.navigator.userAgent,
+    height: screen.height,
+    width: screen.width,
+    angle: window.orientation,
+    //angle: window.screen.orientation.angle,
     date: new Date(),
+    confidence: c,
     ad_selected: a,
     annoyingness: b,
-    impression: $("#text").val()
+    impression: $("#text").val(),
+    type: type[1]
   };
 
   // 作成したデータをAjaxで送信
@@ -71,6 +103,6 @@ function Clicked() {
   }).done(function(data) { // success
     window.location.href = next_page;
   }).fail(function(data) { // error
-    window.alert(textStatus + ": Unable to connect to the server.");
+    window.alert("Unable to connect to the server.");
   });
 }
